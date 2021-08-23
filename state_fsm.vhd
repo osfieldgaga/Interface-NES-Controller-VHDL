@@ -7,11 +7,9 @@ entity state_fsm is
 
 	port(
 		clk_6, rst : in std_logic;
-		--data : in std_logic;
 		pulse, latch : out std_logic;
 		en_shift, en_reg : out std_logic
-		--a, b, sel, start, u, d, l, r : out std_logic
-		--led : out std_logic_vector(7 downto 0)
+
 	);
 	
 end state_fsm;
@@ -21,18 +19,9 @@ architecture Behavioral of state_fsm is
 	type states is (ST0, ST1, ST2, ST3, ST4, ST5, ST6, ST7, ST8, ST9, ST10, ST11, ST12, ST13, ST14, ST15, ST16, ST17, st18);
 	signal ps, ns : states;
 	
-	--signal cnt2 : integer := 1390;
 	signal cnt2 : integer := 2779;
 	
 	signal s1 : std_logic;
-	
-	--signal a, b, sel, start, u, d, l, r : std_logic;
-	
-	--signal led_sig : std_logic_vector(7 downto 0) := "00000000";
-	--signal en_shift_ : std_logic;
-	
-	
-	
 
 begin
 
@@ -43,11 +32,9 @@ begin
 		if(rising_edge(clk_6)) then
 			
 			if(cnt2 <= 0) then ---every 60Hz
-				--cnt2 <= 1389;
+			--60Hz is apprx. 2780 times slower then 166.67kHz (6us)
 				cnt2 <= 2779;
-				 s1 <= '1';
-				 
-				 
+				 s1 <= '1'; --to control when to begin with the latch signal
 			else
 				cnt2 <= cnt2 - 1;
 				s1 <= '0';
@@ -55,11 +42,9 @@ begin
 			
 		end if;
 	end process;
+
 	
-	
-	--led <= a & b & sel & start & u & d & l & r;
-	
-	process (clk_6, rst)
+	state_register : process (clk_6, rst)
 	begin
 		if(rst = '1') then
 			ps <= st0;
@@ -70,7 +55,7 @@ begin
 	
 	
 	
-	process(ps, s1)
+	compute_ns : process(ps, s1)
 	begin
 		case (ps) is
 			when st0 =>   ----flat, nothing here
@@ -90,79 +75,79 @@ begin
 					ns <= st3;
 
 			
-			when st3 => ---button A
+			when st3 => 
 
 					ns <= st4;
 			
 			
-			when st4 => ---button A wait
+			when st4 => 
 				
 					ns <= st5;
 			
 			
-			when st5 =>  ---button B
+			when st5 => 
 				
 					ns <= st6;
 				
-			when st6 =>  ---button B wait
+			when st6 => 
 				
 					ns <= st7;
 				
 			
 			
-			when st7 => --- button SELECT
+			when st7 => 
 			
 					ns <= st8;
 			
-			when st8 => --- button SELECT wait
+			when st8 =>
 				
 					ns <= st9;
 			
 			
-			when st9 => --- button START
+			when st9 =>
 			
 					ns <= st10;
 				
-			when st10 => --- button START wait
+			when st10 =>
 				
 					ns <= st11;
 				
 			
 			
-			when st11 => --- button UP
+			when st11 =>
 					ns <= st12;
 		
-			when st12 => --- button UP wait
+			when st12 =>
 				
 					ns <= st13;
 			
 			
-			when st13 => --- button DOWN
+			when st13 => 
 			
 					ns <= st14;
 				
-			when st14 => --- button DOWN wait
+			when st14 =>
 				
 					ns <= st15;
 				
 			
-			when st15 => --- button LEFT
+			when st15 =>
 				
 					ns <= st16;
 				
 			
-			when st16 => --- button LEFT wait
+			when st16 =>
 			
 					ns <= st17;
 			
 			
 			
-			when st17 => --- button RIGHT
+			when st17 =>
 				
 					ns <= st18;
 					
 					
-			when st18 => --- button RIGHT
+			when st18 =>
 				
 					ns <= st0;
 			
@@ -171,24 +156,12 @@ begin
 	end process;
 	
 	
-	--led <= led_sig(6 downto 0) & (not data) when en_shift = '1';
-	
-	process (ps)
+	generate_waveforms : process (ps)
 	begin
 		case (ps) is
 			when st0 =>
 				latch <= '0';
 				pulse <= '0';
-				
-				--a <= '0';
-				--b <= '0';
-				--sel <= '0';
-				--start <= '0';
-				--u <= '0';
-				--d <= '0';
-				--l <= '0';
-				--r <= '0';
-				
 				
 				en_shift <= '0';
 				en_reg <= '0';

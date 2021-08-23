@@ -1,33 +1,5 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    09:45:39 08/14/2021 
--- Design Name: 
--- Module Name:    main_2 - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity main_2 is
 
@@ -51,23 +23,11 @@ architecture Behavioral of main_2 is
 
 	end component;
 	
-	--component clk_60
-
-	--port(
-			--clk : in std_logic;
-			--clk_60 : out std_logic
-		--);
-
-	--end component;
-	
 	component state_fsm
 
 		port(
 			clk_6, rst : in std_logic;
-			--data : in std_logic;
 			pulse, latch, en_shift, en_reg : out std_logic
-			--a, b, sel, start, u, d, l, r : out std_logic
-			--led : out std_logic_vector(7 downto 0)
 		);
 	
 	end component;
@@ -128,32 +88,15 @@ begin
 		pulse => pulse_sig,
 		latch => latch_sig,
 		
-		--data => data,
-		--a => a,
-		--b => b,
-		--sel => sel,
-		--start => start,
-		--u => u,
-		--d => d,
-		--l => l,
-		--r => r
-		
-		--led => led
-		
 		en_shift => en_shift_sig,
 		en_reg => en_reg_sig
 	);
 
 	clock_6us : clk_6us port map (
 		clk => clk_50m,
-		--en_clk60 => clk_60Hz_sig,
 		clk_r => clk_6u_sig
 	);
-	
-	--clock_60Hz : clk_60 port map (
-		--clk => clk_50m,
-		--clk_60 => clk_60Hz_sig
-	--);
+
 
 end Behavioral;
 
