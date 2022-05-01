@@ -7,7 +7,7 @@ The controller responds with the state of each button.
 The NES controller is a fairly easy device to understand. It uses a shift register to capture the state of the buttons and sends the information as a stream of bits.
 The operation is said to be from parallel to serial.
 
-###### How the controller works
+### How the controller works
 
 The NES uses a serialized polling mechanism to query the state of the buttons. Every 60 Hz, the NES sends a 12us high signal to the Latch pin, telling the controller to latch the state of of all buttons internally. Six microseconds later, the NES sends 8 high pulses on the Pulse pin, 12us per full cycle, 50% duty cycle.
 
@@ -36,7 +36,7 @@ Finally, here's a video on YouTube explaining how the NES Controller works. Than
 
 https://www.youtube.com/watch?v=dahbvSYV0KA
 
-###### Simulation
+### Simulation
 
 Just in case you're curious, this is what the simulation looks like using the Xilinx tool
 
