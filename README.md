@@ -32,6 +32,7 @@ If you're like me and have a Famiclone controller (a copycat of the original NES
 It basically shows the location of each pin on the Famiclone controller. 
 
 Finally, here's a video on YouTube explaining how the NES Controller works. Thanks to their channel as well!
+
 https://www.youtube.com/watch?v=dahbvSYV0KA
 
 
