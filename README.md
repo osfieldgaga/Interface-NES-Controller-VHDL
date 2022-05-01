@@ -17,6 +17,8 @@ I made use of a 19 state Finite State Machine. Each state is a half clock cycle,
 
 ![response+states](https://user-images.githubusercontent.com/29616448/166157754-e0847db4-6da0-4749-bf8f-5411e8441877.png)
 
+Note that my data line isn't the cleanest signal ever, but it doesn't really matter because the button's state is active low. When it's pressed, it's represented by a 0 on the Data line. Simply put, 0 = pressed, anything else = not pressed.
+
 More on how the controller communicated the state of the buttons (this is what I actually used, thanks to them):
 https://tresi.github.io/nes/
 
@@ -29,6 +31,7 @@ If you're like me and have a Famiclone controller (a copycat of the original NES
 
 It basically shows the location of each pin on the Famiclone controller. 
 
-Finally, here's a video on YouTube explaining 
+Finally, here's a video on YouTube explaining how the NES Controller works. Thanks to their channel as well!
+https://www.youtube.com/watch?v=dahbvSYV0KA
 
 
