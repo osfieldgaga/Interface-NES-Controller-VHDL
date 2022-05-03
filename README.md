@@ -31,7 +31,7 @@ If you're like me and have a Famiclone controller (a copycat of the original NES
 
 ![famiclone](https://user-images.githubusercontent.com/29616448/166157383-18038cdb-df62-4f9d-bd2d-07de5a3f5a12.png)
 
-It basically shows the location of each pin on the Famiclone controller. 
+It basically shows the location of each pin on the Famiclone controller. Keep in mind that strobe = latch and clock = pulse.
 
 Finally, here's a video on YouTube explaining how the NES Controller works. Thanks to their channel as well!
 
